@@ -120,5 +120,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define SPLIT_OLED_ENABLE
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 6
-#define COMBO_COUNT 5
+#define COMBO_COUNT 8
 #define COMBO_ONLY_FROM_LAYER 0

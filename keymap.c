@@ -24,6 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MS_BTN4 KC_MS_BTN4
 #define MS_WHLU KC_MS_WH_UP
 #define MS_WHLD KC_MS_WH_DOWN
+#define MS_WHLL KC_MS_WH_LEFT
+#define MS_WHLR KC_MS_WH_RIGHT
 
 // Layer names for each layer
 enum corne_layers
@@ -40,22 +42,31 @@ enum combos
     TG_GAME,
     CB_BTN1,
     CB_BTN2,
+    CB_BTN3,
     CB_WHLU,
-    CB_WHLD
+    CB_WHLD,
+    CB_WHLL,
+    CB_WHLR
 };
 
 const uint16_t PROGMEM combo_gaming[] = {MO(1), MO(2), COMBO_END}; //
 const uint16_t PROGMEM combo_btn1[] = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_btn2[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_btn3[] = {KC_J, KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM combo_whlu[] = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM combo_whld[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM combo_whll[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_whlr[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [TG_GAME] = COMBO(combo_gaming, TG(_GAMING__)), // Toggle Gaming Layer
     [CB_BTN1] = COMBO(combo_btn1, MS_BTN1),         // Left Click
     [CB_BTN2] = COMBO(combo_btn2, MS_BTN2),         // Right Click
+    [CB_BTN3] = COMBO(combo_btn3, MS_BTN3),         // Middle Click
     [CB_WHLU] = COMBO(combo_whlu, MS_WHLU),         // Scroll Up
-    [CB_WHLD] = COMBO(combo_whld, MS_WHLD)          // Scroll Down
+    [CB_WHLD] = COMBO(combo_whld, MS_WHLD),         // Scroll Down
+    [CB_WHLL] = COMBO(combo_whll, MS_WHLL),         // Scroll Left
+    [CB_WHLR] = COMBO(combo_whlr, MS_WHLR)          // Scroll Right
 };
 
 // Tap Dance declarations
