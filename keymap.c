@@ -69,16 +69,6 @@ combo_t key_combos[COMBO_COUNT] = {
     [CB_WHLR] = COMBO(combo_whlr, MS_WHLR)          // Scroll Right
 };
 
-// Tap Dance declarations
-enum tap_dance 
-{
-    EGUI
-};
-
-tap_dance_action_t tap_dance_actions[] = {
-    [EGUI] = ACTION_TAP_DANCE_DOUBLE(KC_ENT, KC_LGUI),
-};
-
 // Alias
 // _______ KC_TRNS (Transparent)
 // XXXXXXX KC_NO (NOP)
@@ -123,13 +113,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_GAMING__] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y, MS_WHLU, MS_WHLD,    KC_O,   KC_P,  KC_BSPC,
+        KC_ESC,    KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,                         KC_Y, KC_U,    KC_I,   KC_O,    KC_P, KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H, MS_BTN1, MS_BTN2, MS_BTN3, MS_BTN4, KC_QUOT,
+         KC_TAB,   KC_G,    KC_A,    KC_S,    KC_D,    KC_F,                         KC_H, KC_J,    KC_K,   KC_L, KC_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
+        KC_LSFT,   KC_B,    KC_Z,    KC_X,    KC_C,    KC_V,                         KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH,  KC_ENT,
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                            KC_LCTL, KC_LALT,  KC_SPC,     KC_SPC, XXXXXXX, XXXXXXX
+                                            KC_LCTL, KC_LALT,  KC_SPC,     KC_SPC,  TO(0), XXXXXXX
                                         //`--------------------------'  `--------------------------'
     )
 };
@@ -322,6 +312,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
     case 0:
         rgb_matrix_reload_from_eeprom();
+        combo_enable();
         break;
     case 1:
         rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
@@ -334,6 +325,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     case 3:
         rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
         rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
+        combo_disable();
         break;
     }
   return state;
